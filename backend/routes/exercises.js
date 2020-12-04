@@ -24,7 +24,7 @@ router.post('/add',async(req,res) => {
         if(user.length == 0) throw new Error('Invalid User');
 
         let newExercise = new Exercise({
-            user : user[0],
+            username,
             description,
             duration,
             date
@@ -49,16 +49,13 @@ router.put('/:id',async (req,res) => {
         if(user.length == 0) throw new Error('Invalid User');
 
         const exercise = await Exercise.findByIdAndUpdate(req.params.id,{
-            user : {
-                _id : user[0]._id,
-                username : user[0].username
-            },
+            username,
             description,
             duration,
             date
         });
 
-        if(!exercise) return res.status(404).json('movie not found with this id');
+        if(!exercise) return res.status(404).json('exercise not found with this id');
         res.json('Exercise updated');
 
     } catch (err) {

@@ -3,8 +3,8 @@ const {userSchema} = require('../models/user-model');
 
 
 const exerciseSchema = new mongoose.Schema({
-    user: {
-        type:userSchema,
+    username: {
+        type:String,
         required:true,
     },
     description : {

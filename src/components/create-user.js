@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from './../axios';
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class CreateUser extends Component {
     })
   }
 
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
 
     const user = {
@@ -26,6 +27,14 @@ export default class CreateUser extends Component {
     }
 
     console.log(user);
+
+    try{
+        const res = await axios.post('/users/add',user);
+        console.log(res.data);
+    } catch(err) {
+        console.log('Error: ',err);
+    }
+
 
     
     this.setState({
