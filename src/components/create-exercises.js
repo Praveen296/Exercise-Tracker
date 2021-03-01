@@ -55,7 +55,7 @@ function CreateExercise() {
         <form onSubmit={onSubmit}>
           <div className="form-group"> 
             <label>Username: </label>
-            <select //ref= {textInput}
+            <select ref= {textInput}
                 required
                 className="form-control"
                 value={username}
